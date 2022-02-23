@@ -17,7 +17,7 @@ $ python products_by_seller.py
 
 # Ejemplo de uso
 
-A modo de ejemplo se encuentra [products.log](https://github.com/aguirre-ivan/script-meli/products.log), el cual es el resultado de recorrer los items publicados por el `seller_id = 179571326` del `site_id = "MLA"`
+A modo de ejemplo se encuentra [products.log](https://github.com/aguirre-ivan/products-by-seller/products.log), el cual es el resultado de recorrer los items publicados por el `seller_id = 179571326` del `site_id = "MLA"`
 
 ## Elaboración
 
