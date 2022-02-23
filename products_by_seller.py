@@ -1,12 +1,21 @@
+# DESCRIPCION:
+# Genera un archivo LOG con los ítems publicados por SELLER_ID del site SITE_ID
+# Se generan lineas por cada producto con el siguiente formato:
+# "id" del ítem, "title" del item, "category_id" donde está publicado, "name" de la categoría.
+
+# ELABORACION: Aguirre, Iván Gonzalo (2022-02)
+
+# FUNCIONAMIENTO:
+# Simplemente cambiar el SELLER_ID y/o SITE_ID por lo requerido
+# $ python products_by_seller.py
+
+
 import requests
 import logging
 
-# USO
-# Cambiar el seller_id y/o site_id por lo requerido
 
 SITE_ID = 'MLA'
-SELLER_ID = '179571326'
-URL_PRODUCTS = f"https://api.mercadolibre.com/sites/{SITE_ID}/search?seller_id={SELLER_ID}"
+SELLER_ID = ['179571326']
 
 
 def get_category_name(category_id):
@@ -19,12 +28,12 @@ def get_category_name(category_id):
 	return category_name_request.json()['name']
 
 
-def log_seller_products(seller_id):
+def log_seller_products(url_seller_products):
 	"""
 	Agrega al archivo de LOG los datos de los productos asociados al seller_id en el siguiente formato:
 	"id" del ítem, "title" del item, "category_id" donde está publicado, "name" de la categoría.
 	"""
-	products_requests = requests.get(URL_PRODUCTS)
+	products_requests = requests.get(url_seller_products)
 	products_requests_dict = products_requests.json()
 
 	logging.basicConfig(filename='products.log', level="INFO")
@@ -35,12 +44,15 @@ def log_seller_products(seller_id):
 		category_id = product['category_id']
 		category_name = get_category_name(category_id)
 
-		line = f"{product_id},{category_id},{category_name}"
+		line = f"{product_id}, {category_id}, {category_name}"
 		logging.info(line)
 
 
 def main():
-	log_seller_products(SELLER_ID)
+	for seller in SELLER_ID:
+		url_seller_products = f"https://api.mercadolibre.com/sites/{SITE_ID}/search?seller_id={seller}"
+		log_seller_products(url_seller_products)
+
 
 if __name__ == '__main__':
 	main()
