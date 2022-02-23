@@ -8,7 +8,7 @@ Script realizado en Python que recorre los elementos de uno o más `seller_id` d
 
 Cambiar a preferencia las siguientes variables:
 - SELLER_ID: Representa una lista que contiene uno o más seller_id, de los cuales se quiere obtener sus productos
-- SITE_ID: ID del sitio donde se quiere realizar la busqueda. POr jemplo = "MLA"
+- SITE_ID: ID del sitio donde se quiere realizar la busqueda. Por jemplo = "MLA"
 
 ```
 $ python products_by_seller.py
