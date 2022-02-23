@@ -4,7 +4,6 @@ Script realizado en Python que recorre los elementos de uno o más `seller_id` d
 ```
 "id" del ítem, "title" del item, "category_id" donde está publicado, "name" de la categoria
 ```
-
 ## Funcionamiento
 
 Cambiar a preferencia las siguientes variables:
@@ -14,7 +13,6 @@ Cambiar a preferencia las siguientes variables:
 ```
 $ python products_by_seller.py
 ```
-
 ## Ejemplo de uso
 
 A modo de ejemplo se encuentra [products.log](https://github.com/aguirre-ivan/products-by-seller/products.log), el cual es el resultado de recorrer los items publicados por el `seller_id = 179571326` del `site_id = "MLA"`
