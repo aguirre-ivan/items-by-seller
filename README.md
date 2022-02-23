@@ -1,4 +1,4 @@
-# PRODUCTS BY SELLER
+# Products by seller
 
 Script realizado en Python que recorre los elementos de uno o más `seller_id` de un sitio determinado `site_id` y genera un archivo de LOG, el cual contiene los siguientes datos de cada ítem:
 ```
