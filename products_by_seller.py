@@ -28,16 +28,6 @@ def get_category_name(category_id):
 	return category_name_request.json()['name']
 
 
-def get_item_title(item_id):
-	"""
-	Devuelve el titulo del item asociado al item_id
-	"""
-	url_item_info = f"https://api.mercadolibre.com/items?ids={item_id}"
-	item_info_request = requests.get(url_item_info)
-
-	return item_info_request.json()[0]['body']['title']
-
-
 def log_seller_products(url_seller_products):
 	"""
 	Agrega al archivo de LOG los datos de los productos asociados al seller_id en el siguiente formato:
@@ -51,7 +41,7 @@ def log_seller_products(url_seller_products):
 	for product in products_requests_dict['results']:
 
 		product_id = product['id']
-		item_title = get_item_title(product_id)
+		item_title = product['title']
 		category_id = product['category_id']
 		category_name = get_category_name(category_id)
 
