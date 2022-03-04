@@ -1,24 +1,19 @@
-# Products by seller
+# Items by seller
 
-Script realizado en Python que recorre los elementos de uno o más `seller_id` de un sitio determinado `site_id` y genera un archivo de LOG, el cual contiene los siguientes datos de cada ítem:
-```
-"id" del ítem, "title" del item, "category_id" donde está publicado, "name" de la categoria
-```
-## Funcionamiento
-
-Cambiar a preferencia las siguientes variables:
-- SELLER_ID: Representa una lista que contiene uno o más seller_id, de los cuales se quiere obtener sus productos
-- SITE_ID: ID del sitio donde se quiere realizar la busqueda. Por jemplo = "MLA"
+Script made in Python that iterates through one or more `seller_id` items from a `site_id` and generates a LOG file which contains the following info:
 
 ```
-$ python products_by_seller.py
+ítem "id", item "title", "category_id", category "name"
 ```
-## Ejemplo de uso
+## Usage
+1. Config variables:
+   - SELLER_ID: List with one or more seller_id
+   - SITE_ID: site ID where we want to search (for example "MLA")
 
-A modo de ejemplo se encuentra [products.log](https://github.com/aguirre-ivan/products-by-seller/blob/main/products.log), el cual es el resultado de recorrer los items publicados por el `seller_id = 179571326` del `site_id = "MLA"`
+2. Run [items_by_seller.py](https://github.com/aguirre-ivan/items-by-seller/blob/main/items_by_seller.py)
+```
+$ python items_by_seller.py
+```
+## Example
 
-## Elaboración
-
-Aguirre, Iván Gonzalo
-
-Fecha: 2022-02
+[items.log](https://github.com/aguirre-ivan/items-by-seller/blob/main/items.log), which is the result of `seller_id = 179571326` and `site_id = "MLA"`

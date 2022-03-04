@@ -1,13 +1,15 @@
-# DESCRIPCION:
-# Genera un archivo LOG con los ítems publicados por SELLER_ID del site SITE_ID
-# Se generan lineas por cada producto con el siguiente formato:
-# "id" del ítem, "title" del item, "category_id" donde está publicado, "name" de la categoría.
+# DESCRIPTION:
+# Generates a LOG file (items.log) with the items published in site SITE_ID filtered by SELLER_ID
+# Format lines:
+# ítem "id", item "title", "category_id", category "name"
 
-# ELABORACION: Aguirre, Iván Gonzalo (2022-02)
+# WRITTEN BY: 
+# Aguirre, Iván Gonzalo (2022-02)
 
-# FUNCIONAMIENTO:
-# Simplemente cambiar el SELLER_ID y/o SITE_ID por lo requerido
-# $ python products_by_seller.py
+# USAGE:
+# Just config SELLER_ID and/or SITE_ID
+# Run items_by_seller.py
+# $ python items_by_seller.py
 
 
 import requests
@@ -20,7 +22,13 @@ SELLER_ID = ['179571326']
 
 def get_category_name(category_id):
 	"""
-	Devuelve el nombre de la categoria asociada a category_id
+	Returns category name associated to category_id
+
+	Args:
+		category_id (int)
+
+	Returns:
+		str: category name
 	"""
 	url_category_info = f"https://api.mercadolibre.com/categories/{category_id}"
 	category_name_request = requests.get(url_category_info)
@@ -28,32 +36,35 @@ def get_category_name(category_id):
 	return category_name_request.json()['name']
 
 
-def log_seller_products(url_seller_products):
+def log_seller_items(url_seller_items):
 	"""
-	Agrega al archivo de LOG los datos de los productos asociados al seller_id en el siguiente formato:
-	"id" del ítem, "title" del item, "category_id" donde está publicado, "name" de la categoría.
+	Adds seller items info to log file in format:
+	ítem "id", item "title", "category_id", category "name"
+
+	Args:
+		url_seller_items (str): url of items by seller_id
 	"""
-	products_requests = requests.get(url_seller_products)
-	products_requests_dict = products_requests.json()
+	items_requests = requests.get(url_seller_items)
+	items_requests_dict = items_requests.json()
 
-	logging.basicConfig(filename='products.log', level="INFO")
+	logging.basicConfig(filename='items.log', level="INFO", format='%(message)s')
 
-	for product in products_requests_dict['results']:
+	for item in items_requests_dict['results']:
 
-		product_id = product['id']
-		item_title = product['title']
-		category_id = product['category_id']
+		item_id = item['id']
+		item_title = item['title']
+		category_id = item['category_id']
 		category_name = get_category_name(category_id)
 
-		line = f"{product_id}, {item_title}, {category_id}, {category_name}"
+		line = f"{item_id}, {item_title}, {category_id}, {category_name}"
 		logging.info(line)
 
 
-def main():
+def generate_log_file():
 	for seller in SELLER_ID:
-		url_seller_products = f"https://api.mercadolibre.com/sites/{SITE_ID}/search?seller_id={seller}"
-		log_seller_products(url_seller_products)
+		url_seller_items = f"https://api.mercadolibre.com/sites/{SITE_ID}/search?seller_id={seller}"
+		log_seller_items(url_seller_items)
 
 
 if __name__ == '__main__':
-	main()
+	generate_log_file()
