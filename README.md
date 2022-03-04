@@ -10,10 +10,10 @@ Script made in Python that iterates through one or more `seller_id` items from a
    - SELLER_ID: List with one or more seller_id
    - SITE_ID: site ID where we want to search (for example "MLA")
 
-2. Run [items_by_seller.py](https://github.com/aguirre-ivan/items-by-seller/blob/main/items_by_seller.py)
+2. Run [items_by_seller.py](https://github.com/aguirre-ivan/products-by-seller/blob/main/items_by_seller.py)
 ```
 $ python items_by_seller.py
 ```
 ## Example
 
-[items.log](https://github.com/aguirre-ivan/items-by-seller/blob/main/items.log), which is the result of `seller_id = 179571326` and `site_id = "MLA"`
+[items.log](https://github.com/aguirre-ivan/products-by-seller/blob/main/items.log), which is the result of `seller_id = 179571326` and `site_id = "MLA"`
