@@ -14,6 +14,10 @@ Script made in Python that iterates through one or more `seller_id` items from a
 ```
 $ python items_by_seller.py
 ```
+
+## API
+- [Mercado libre](https://developers.mercadolibre.com.ar/)
+
 ## Example
 
 [items.log](https://github.com/aguirre-ivan/products-by-seller/blob/main/items.log), which is the result of `seller_id = 179571326` and `site_id = "MLA"`
