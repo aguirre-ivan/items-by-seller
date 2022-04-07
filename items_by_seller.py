@@ -31,9 +31,9 @@ def get_category_name(category_id):
 		str: category name
 	"""
 	url_category_info = f"https://api.mercadolibre.com/categories/{category_id}"
-	category_name_request = requests.get(url_category_info)
+	json_category_name = requests.get(url_category_info).json()
 
-	return category_name_request.json()['name']
+	return json_category_name['name']
 
 
 def log_seller_items(url_seller_items):
@@ -44,12 +44,11 @@ def log_seller_items(url_seller_items):
 	Args:
 		url_seller_items (str): url of items by seller_id
 	"""
-	items_requests = requests.get(url_seller_items)
-	items_requests_dict = items_requests.json()
+	json_items_info = requests.get(url_seller_items).json()
 
 	logging.basicConfig(filename='items.log', level="INFO", format='%(message)s')
 
-	for item in items_requests_dict['results']:
+	for item in json_items_info['results']:
 
 		item_id = item['id']
 		item_title = item['title']
